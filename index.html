@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación - Casas para Judíos | Hogar para Familias Judías en Argentina</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c5aa0;
+            --secondary-color: #f4f7fc;
+            --accent-color: #d4af37;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e3a5f 100%);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/placeholder.svg?height=600&width=1200') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .presentation-section {
+            background: var(--white);
+        }
+
+        .value-prop-section {
+            background: var(--secondary-color);
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-section {
+            background: var(--white);
+        }
+
+        .form-container {
+            background: var(--secondary-color);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(44, 90, 160, 0.25);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a5f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 90, 160, 0.4);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .star-of-david {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-home me-2"></i>
+                Fundación - Casas para Judíos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#presentacion">Presentación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#impacto">Nuestro Impacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#registro">Registro</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 hero-content">
+                    <h1 class="hero-title fade-in">
+                        <i class="fas fa-star-of-david star-of-david"></i>
+                        Construyendo Hogares, Fortaleciendo Comunidades
+                        <i class="fas fa-star-of-david star-of-david"></i>
+                    </h1>
+                    <p class="hero-subtitle fade-in">
+                        Ayudamos a familias judías en Argentina a acceder a viviendas dignas y seguras, 
+                        fortaleciendo nuestra comunidad y preservando nuestras tradiciones.
+                    </p>
+                    <div class="fade-in">
+                        <a href="#registro" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-hand-holding-heart me-2"></i>
+                            Solicitar Ayuda
+                        </a>
+                        <a href="#presentacion" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-info-circle me-2"></i>
+                            Conocer Más
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presentation Section -->
+    <section id="presentacion" class="presentation-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title fade-in">Nuestra Misión</h2>
+                    <div class="fade-in">
+                        <p class="lead text-center mb-4">
+                            La Fundación - Casas para Judíos es una organización benéfica dedicada a proporcionar 
+                            soluciones habitacionales a familias judías en situación de vulnerabilidad en Argentina.
+                        </p>
+                        <div class="row mt-5">
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-heart text-primary me-3 mt-1" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h5>Nuestra Visión</h5>
+                                        <p>Crear una comunidad judía fuerte y próspera en Argentina, donde cada familia tenga acceso a una vivienda digna que les permita mantener sus tradiciones y valores.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-hands-helping text-primary me-3 mt-1" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h5>Nuestros Valores</h5>
+                                        <p>Basamos nuestro trabajo en los principios de <em>Tzedakah</em> (justicia social), <em>Tikkun Olam</em> (reparar el mundo) y la solidaridad comunitaria.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <p class="fs-5 text-muted">
+                                <i class="fas fa-quote-left me-2"></i>
+                                "Un hogar no es solo un lugar para vivir, es donde se construye el futuro de nuestra comunidad"
+                                <i class="fas fa-quote-right ms-2"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section id="impacto" class="value-prop-section section-padding">
+        <div class="container">
+            <h2 class="section-title fade-in">Nuestro Impacto</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card fade-in">
+                        <div class="text-center">
+                            <i class="fas fa-home value-icon"></i>
+                            <h4>Viviendas Dignas</h4>
+                            <p>Proporcionamos acceso a viviendas seguras y adecuadas para familias judías, garantizando espacios donde puedan practicar sus tradiciones religiosas y culturales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card fade-in">
+                        <div class="text-center">
+                            <i class="fas fa-users value-icon"></i>
+                            <h4>Fortalecimiento Comunitario</h4>
+                            <p>Creamos redes de apoyo que conectan a las familias con la comunidad judía local, promoviendo la integración y el sentido de pertenencia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="value-card fade-in">
+                        <div class="text-center">
+                            <i class="fas fa-graduation-cap value-icon"></i>
+                            <h4>Educación y Desarrollo</h4>
+                            <p>Facilitamos el acceso a instituciones educativas judías y programas de desarrollo personal, asegurando la continuidad de nuestras tradiciones.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto text-center fade-in">
+                    <div class="bg-white p-4 rounded-3 shadow-sm">
+                        <h4 class="text-primary mb-3">¿Por qué es importante nuestro trabajo?</h4>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h3 class="text-primary">150+</h3>
+                                <p class="mb-0">Familias Asistidas</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h3 class="text-primary">85%</h3>
+                                <p class="mb-0">Tasa de Éxito</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h3 class="text-primary">10</h3>
+                                <p class="mb-0">Años de Experiencia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form Section -->
+    <section id="registro" class="form-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title fade-in">Solicitud de Asistencia Habitacional</h2>
+                    <div class="form-container fade-in">
+                        <p class="text-center mb-4 lead">
+                            Complete este formulario para registrar su interés en recibir asistencia habitacional. 
+                            Nuestro equipo se pondrá en contacto con usted para evaluar su situación.
+                        </p>
+                        
+                        <form id="registrationForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nombre" class="form-label">
+                                        <i class="fas fa-user me-2"></i>Nombre Completo *
+                                    </label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope me-2"></i>Correo Electrónico *
+                                    </label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="telefono" class="form-label">
+                                        <i class="fas fa-phone me-2"></i>Número de Teléfono *
+                                    </label>
+                                    <input type="tel" class="form-control" id="telefono" name="telefono" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="miembros" class="form-label">
+                                        <i class="fas fa-users me-2"></i>Número de Miembros del Hogar *
+                                    </label>
+                                    <select class="form-control" id="miembros" name="miembros" required>
+                                        <option value="">Seleccione...</option>
+                                        <option value="1">1 persona</option>
+                                        <option value="2">2 personas</option>
+                                        <option value="3">3 personas</option>
+                                        <option value="4">4 personas</option>
+                                        <option value="5">5 personas</option>
+                                        <option value="6+">6 o más personas</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="ciudad" class="form-label">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Ciudad de Residencia Actual
+                                </label>
+                                <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Buenos Aires, Córdoba, Rosario, etc.">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="situacion" class="form-label">
+                                    <i class="fas fa-home me-2"></i>Situación Habitacional Actual
+                                </label>
+                                <select class="form-control" id="situacion" name="situacion">
+                                    <option value="">Seleccione...</option>
+                                    <option value="alquiler">Viviendo en alquiler</option>
+                                    <option value="familiar">Viviendo con familiares</option>
+                                    <option value="temporal">Alojamiento temporal</option>
+                                    <option value="riesgo">En riesgo de desalojo</option>
+                                    <option value="otro">Otra situación</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="necesidades" class="form-label">
+                                    <i class="fas fa-edit me-2"></i>Describa sus Necesidades Habitacionales *
+                                </label>
+                                <textarea class="form-control" id="necesidades" name="necesidades" rows="5" 
+                                    placeholder="Por favor, describa brevemente su situación actual, sus necesidades específicas de vivienda, y cualquier circunstancia especial que debamos considerar..." required></textarea>
+                                <div class="form-text">
+                                    Incluya información sobre ubicación preferida, necesidades especiales, situación económica, etc.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="privacidad" name="privacidad" required>
+                                    <label class="form-check-label" for="privacidad">
+                                        Acepto que mis datos personales sean utilizados para evaluar mi solicitud de asistencia habitacional y para contactarme con información relevante. *
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Enviar Solicitud
+                                </button>
+                            </div>
+                            
+                            <div id="successMessage" class="success-message">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <strong>¡Solicitud enviada exitosamente!</strong> 
+                                Nuestro equipo revisará su información y se pondrá en contacto con usted en los próximos días.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h5 class="mb-3">
+                        <i class="fas fa-star-of-david star-of-david"></i>
+                        Fundación - Casas para Judíos
+                        <i class="fas fa-star-of-david star-of-david"></i>
+                    </h5>
+                    <p class="mb-3">
+                        Construyendo hogares, fortaleciendo comunidades, preservando tradiciones.
+                    </p>
+                    <div class="mb-3">
+                        <a href="mailto:info@casasparajudios.org" class="text-white me-3">
+                            <i class="fas fa-envelope me-2"></i>info@casasparajudios.org
+                        </a>
+                        <a href="tel:+541123456789" class="text-white">
+                            <i class="fas fa-phone me-2"></i>+54 11 2345-6789
+                        </a>
+                    </div>
+                    <p class="mb-0">
+                        &copy; 2025 Fundación - Casas para Judíos. Todos los derechos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handling
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.nombre || !data.email || !data.telefono || !data.miembros || !data.necesidades || !data.privacidad) {
+                alert('Por favor, complete todos los campos obligatorios.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Por favor, ingrese un correo electrónico válido.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Enviando...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Log form data (in real implementation, this would be sent to a server)
+                console.log('Form submitted with data:', data);
+                
+            }, 2000);
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.value-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Initialize fade-in animations immediately for hero section
+        setTimeout(() => {
+            document.querySelectorAll('.hero-section .fade-in').forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, index * 200);
+            });
+        }, 100);
+    </script>
+</body>
+</html>
